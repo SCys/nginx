@@ -24,15 +24,17 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Alpine
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
-          context: ./docker_alpine
+          context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nginx:alpine
+          tags: scys/nginx:alpine,scys/nginx:latest
 
-      - name: Build Default
-        uses: docker/build-push-action@v2
-        with:
-          context: ./docker/
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nginx:latest
+      - name: Run nginx -V and njs -v
+        run: |
+          docker run --rm -t scys/nginx nginx -V | sed 's/\-\-/\n\t--/g' | tee
+          echo "njs v$(docker run -t scys/nginx njs -v)"
+          
+      - name: Test njs command line
+        run: |
+          echo "console.log('Using njs v' + njs.version)" | docker run -i --rm scys/nginx njs -q | grep "Using njs v0.7.7"

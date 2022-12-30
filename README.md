@@ -1,9 +1,9 @@
 [![Docker Container](https://github.com/SCys/nginx/actions/workflows/docker.yaml/badge.svg)](https://github.com/SCys/nginx/actions/workflows/docker.yaml)
+
 ![Docker Pulls](https://img.shields.io/docker/pulls/scys/nginx)
 
-Debian image: ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/scys/nginx/latest)
-
-Alpine image: ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/scys/nginx/alpine)
+Image size:
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/scys/nginx/latest)
 
 nginx with logrotate and build every day.
 
@@ -21,3 +21,5 @@ docker-compose.yml add blew:
       - /data/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /data/nginx/log:/var/log/nginx
 ```
+
+Docker base on 
