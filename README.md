@@ -12,14 +12,14 @@ i don't not known why the default nginx in docker.io without logrotate.
 docker-compose.yml add blew:
 
 ```yaml
-  nginx:
-    image: scys/nginx:alpine
-    container_name: nginx
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - /data/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /data/nginx/log:/var/log/nginx
+nginx:
+  image: scys/nginx
+  container_name: nginx
+  restart: unless-stopped
+  network_mode: host
+  volumes:
+    - /data/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    - /data/nginx/log:/var/log/nginx
 ```
 
-Docker base on 
+Dockerfile base on *https://github.com/macbre/docker-nginx-http3*

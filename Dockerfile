@@ -233,6 +233,7 @@ RUN \
 	&& mkdir /data/nginx/conf.d \
 	&& mkdir /data/nginx/mod.d
 
+COPY nginx-docker /etc/logrotate.d/nginx-docker
 COPY nginx.conf /etc/nginx/nginx.conf
 # COPY ssl_common.conf /etc/nginx/conf.d/ssl_common.conf
 
