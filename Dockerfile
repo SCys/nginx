@@ -251,6 +251,7 @@ STOPSIGNAL SIGTERM
 RUN chown --verbose nginx:nginx \
 	/var/run/nginx.pid
 
+RUN rc-service crond start && rc-update add crond
+
 USER nginx
-#CMD ["nginx", "-g", "daemon off;"]
-CMD service cron start && nginx -g "daemon off;"
+CMD ["nginx", "-g", "daemon off;"]
