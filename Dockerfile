@@ -252,4 +252,5 @@ RUN chown --verbose nginx:nginx \
 	/var/run/nginx.pid
 
 USER nginx
-CMD ["crond", "&&", "nginx", "-g", "daemon off;"]
+# CMD ["crond", "&&", "nginx", "-g", "daemon off;"]
+CMD crond && nginx -g "daemon off;"
